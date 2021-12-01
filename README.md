@@ -1,6 +1,6 @@
 # AdventofCode2020
 
-My solutions to the advent of code event 2021. For this edition I chose to solve the puzzles using Rust.
+My solutions to the advent of code event 2021. For this edition I chose to solve the puzzles using Rust :crab: .
 
 | Day | Name        | Link           | Solution  |
 | ------------- |-------------- |-------------|------|
