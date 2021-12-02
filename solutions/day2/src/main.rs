@@ -5,6 +5,7 @@ enum Direction {
     Forward,
     Down,
     Up,
+    Invalid,
 }
 
 struct PositionPart1 {
@@ -29,7 +30,7 @@ impl Command {
             "forward" => Direction::Forward,
             "down" => Direction::Down,
             "up" => Direction::Up,
-            _ => Direction::Up,
+            _ => Direction::Invalid,
         };
         Command { direction, units }
     }
@@ -58,6 +59,7 @@ fn calculate_final_position_part1(commands: &Vec<Command>) -> PositionPart1 {
             Direction::Forward => pos.horizontal_position += c.units,
             Direction::Down => pos.depth += c.units,
             Direction::Up => pos.depth -= c.units,
+            _ => {}
         }
     }
     pos
@@ -77,6 +79,7 @@ fn calculate_final_position_part2(commands: &Vec<Command>) -> PositionPart1 {
             }
             Direction::Down => pos.aim += c.units,
             Direction::Up => pos.aim -= c.units,
+            _ => {}
         }
     }
     PositionPart1 {
