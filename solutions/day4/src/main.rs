@@ -19,11 +19,10 @@ impl BingoProblem {
         for i in 0..self.numbers.len() {
             let vec_slice = self.numbers[0..i].to_vec();
             for (index, bb) in self.boards.iter().enumerate() {
-                if !winners.contains(&index) {
-                    if winners.len() == n - 1 && bb.check_if_winning(&vec_slice) {
+                if !winners.contains(&index) && bb.check_if_winning(&vec_slice) {
+                    if winners.len() == n - 1 {
                         return Some((bb.clone(), vec_slice));
-                    }
-                    if bb.check_if_winning(&vec_slice) {
+                    } else {
                         winners.insert(index);
                     }
                 }
