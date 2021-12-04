@@ -14,25 +14,13 @@ struct BingoBoard {
 }
 
 impl BingoProblem {
-    fn find_winning_board(self: &Self) -> Option<(BingoBoard, Vec<u32>)> {
-        for i in 0..self.numbers.len() {
-            let vec_slice = self.numbers[0..i].to_vec();
-            for bb in &self.boards {
-                if bb.check_if_winning(&vec_slice) {
-                    return Some((bb.clone(), vec_slice));
-                }
-            }
-        }
-        None
-    }
-
-    fn find_worst_board(self: &Self) -> Option<(BingoBoard, Vec<u32>)> {
+    fn find_nth_winner(self: &Self, n: usize) -> Option<(BingoBoard, Vec<u32>)> {
         let mut winners: HashSet<usize> = HashSet::new();
         for i in 0..self.numbers.len() {
             let vec_slice = self.numbers[0..i].to_vec();
             for (index, bb) in self.boards.iter().enumerate() {
                 if !winners.contains(&index) {
-                    if winners.len() == self.boards.len() - 1 && bb.check_if_winning(&vec_slice) {
+                    if winners.len() == n - 1 && bb.check_if_winning(&vec_slice) {
                         return Some((bb.clone(), vec_slice));
                     }
                     if bb.check_if_winning(&vec_slice) {
@@ -106,22 +94,19 @@ fn read_input_from_file(path: &str) -> BingoProblem {
             }
         });
     boards.push(curboard.clone());
-    BingoProblem {
-        numbers: numbers,
-        boards: boards,
-    }
+    BingoProblem { numbers, boards }
 }
 
 fn part1(input: &BingoProblem) -> u32 {
-    let (board, numbers) = input
-        .find_winning_board()
-        .expect("Winning board not found.");
+    let (board, numbers) = input.find_nth_winner(1).expect("Winning board not found.");
     let score = board.calculate_score(&numbers);
     score
 }
 
 fn part2(input: &BingoProblem) -> u32 {
-    let (board, numbers) = input.find_worst_board().expect("Worst board not found");
+    let (board, numbers) = input
+        .find_nth_winner(input.boards.len())
+        .expect("Worst board not found");
     let score = board.calculate_score(&numbers);
     score
 }
