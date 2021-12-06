@@ -9,3 +9,4 @@ My solutions to the advent of code event 2021. For this edition I chose to solve
 | 3.  | :zero::one:		 Binary Diagnostic  | [link](https://adventofcode.com/2021/day/3) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day3) |
 | 4.  | :squid:		 Giant Squid            | [link](https://adventofcode.com/2021/day/4) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day4) |
 | 5.  | :tornado:		 Hydrothermal Venture | [link](https://adventofcode.com/2021/day/5) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day5) |
+| 6.  | :fish:			 Lanternfish            | [link](https://adventofcode.com/2021/day/6) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day6) |
