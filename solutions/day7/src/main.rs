@@ -22,6 +22,10 @@ fn calculate_average(input: &Vec<u32>) -> u32 {
     input.iter().sum::<u32>() / input.len() as u32
 }
 
+fn gauss_summation(n: u32) -> u32 {
+    (n.pow(2) + n) / 2
+}
+
 fn fuel_costs_a(x: &u32, destination: &u32) -> u32 {
     if x > destination {
         x - destination
@@ -32,9 +36,9 @@ fn fuel_costs_a(x: &u32, destination: &u32) -> u32 {
 
 fn fuel_costs_b(x: &u32, destination: &u32) -> u32 {
     if x > destination {
-        (1..(x - destination + 1)).fold(0, |a, b| a + b)
+        gauss_summation(x - destination)
     } else {
-        (1..(destination - x + 1)).fold(0, |a, b| a + b)
+        gauss_summation(destination - x)
     }
 }
 
