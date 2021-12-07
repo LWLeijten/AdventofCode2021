@@ -22,34 +22,34 @@ fn calculate_average(input: &Vec<u32>) -> u32 {
     input.iter().sum::<u32>() / input.len() as u32
 }
 
-fn part1(input: &Vec<u32>, median: &u32) -> u32 {
-    input
-        .iter()
-        .map(|x| if x > median { x - median } else { median - x })
-        .sum()
+fn fuel_costs_a(x: &u32, destination: &u32) -> u32 {
+    if x > destination {
+        x - destination
+    } else {
+        destination - x
+    }
 }
 
-fn part2(input: &Vec<u32>, average: &u32) -> u32 {
-    input
-        .iter()
-        .map(|x| {
-            if x > average {
-                (1..(x - average + 1)).fold(0, |a, b| a + b)
-            } else {
-                (1..(average - x + 1)).fold(0, |a, b| a + b)
-            }
-        })
-        .sum()
+fn fuel_costs_b(x: &u32, destination: &u32) -> u32 {
+    if x > destination {
+        (1..(x - destination + 1)).fold(0, |a, b| a + b)
+    } else {
+        (1..(destination - x + 1)).fold(0, |a, b| a + b)
+    }
+}
+
+fn solve(input: &Vec<u32>, destination: &u32, fuel_costs: fn(&u32, &u32) -> u32) -> u32 {
+    input.iter().map(|x| fuel_costs(x, destination)).sum()
 }
 
 fn main() {
     let input = read_input_from_file("input.txt");
     println!(
         "Solution to part 1: {}",
-        part1(&input, &calculate_median(&input))
+        solve(&input, &calculate_median(&input), fuel_costs_a)
     );
     println!(
         "Solution to part 2: {}",
-        part2(&input, &calculate_average(&input))
+        solve(&input, &calculate_average(&input), fuel_costs_b)
     );
 }
