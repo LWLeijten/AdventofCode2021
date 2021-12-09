@@ -12,4 +12,4 @@ My solutions to the advent of code event 2021. For this edition I chose to solve
 | 6.  | :fish:			 Lanternfish              | [link](https://adventofcode.com/2021/day/6) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day6) |
 | 7.  | :whale:			 The Treachery of Whales | [link](https://adventofcode.com/2021/day/7) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day7) |
 | 8.  | :1234:				 Seven Segment Search    | [link](https://adventofcode.com/2021/day/8) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day8) |
-
+| 9.  | :smoking:					 Smoke Basin         | [link](https://adventofcode.com/2021/day/9) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day9) |
