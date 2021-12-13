@@ -15,5 +15,6 @@ My solutions to the advent of code event 2021. For this edition I chose to solve
 | 9.  | :smoking:					 Smoke Basin         | [link](https://adventofcode.com/2021/day/9)  | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day9)  |
 | 10. | :computer:						 Syntax Scoring    | [link](https://adventofcode.com/2021/day/10) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day10) |
 | 11. | :octopus:						 Dumbo Octopus      | [link](https://adventofcode.com/2021/day/11) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day11) |
+| 12. | :world_map:						 Passage Pathing  | [link](https://adventofcode.com/2021/day/12) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day12) |
 
 
