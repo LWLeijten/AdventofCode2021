@@ -39,15 +39,13 @@ fn find_all_paths(
     let neighbours = graph.get(current).unwrap();
     for nb in neighbours {
         if nb != "start" {
-            if is_large_cave(nb) 
+            if is_large_cave(nb)
                 || !path.contains(nb)
-                || ((path.iter().filter(|v| *v == nb).count()
-                    < small_cave_constraint.try_into().unwrap())
-                    && path.iter().all(|v| {
-                        is_large_cave(v)
-                            || path.iter().filter(|w| *w == v).count()
-                                < small_cave_constraint.try_into().unwrap()
-                    }))
+                || path.iter().all(|v| {
+                    is_large_cave(v)
+                        || path.iter().filter(|w| *w == v).count()
+                            < small_cave_constraint.try_into().unwrap()
+                })
             {
                 let mut new_path = path.clone();
                 new_path.push(nb.to_string());
