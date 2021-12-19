@@ -19,5 +19,4 @@ My solutions to the advent of code event 2021. For this edition I chose to solve
 | 13. | :swan:					 Transparent Origami            | [link](https://adventofcode.com/2021/day/13) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day13) |
 | 14. | :microscope:						 Extended Polymerization | [link](https://adventofcode.com/2021/day/14) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day14) |
 | 15. | :microbe:							 Chiton                    | [link](https://adventofcode.com/2021/day/15) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day15) |
-
- 
+| 16. | :zero::one:							 Packet Decoder          | [link](https://adventofcode.com/2021/day/16) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day16) |
