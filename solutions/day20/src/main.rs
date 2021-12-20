@@ -44,10 +44,16 @@ impl ImageProblem {
                                     "0"
                                 }
                             } else {
-                                if i % 2 == 1 {
-                                    "1"
+                                if self.key.chars().nth(0).unwrap() == '#' {
+                                    if i % 2 == 1 {
+                                        "1"
+                                    } else {
+                                        "0"
+                                    }
                                 } else {
-                                    "0"
+                                    {
+                                        "0"
+                                    }
                                 }
                             }
                         })
