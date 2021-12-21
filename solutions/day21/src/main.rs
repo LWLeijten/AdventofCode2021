@@ -1,30 +1,19 @@
-use std::{
-    cmp::{max, min},
-    collections::HashMap,
-};
+use std::{cmp::max, collections::HashMap};
 
-fn part1(p1: &mut i32, p2: &mut i32) -> i32 {
+fn part1(positions: &mut Vec<i32>) -> i32 {
     let mut d_die = 1;
     let mut rolls = 0;
-    let mut p1_score = 0;
-    let mut p2_score = 0;
-    while p1_score < 1000 && p2_score < 1000 {
-        if rolls % 6 == 0 {
-            for _ in 0..3 {
-                *p1 = ((*p1 + d_die - 1) % 10) + 1;
-                d_die = d_die % 100 + 1;
-            }
-            p1_score += *p1;
-        } else {
-            for _ in 0..3 {
-                *p2 = ((*p2 + d_die - 1) % 10) + 1;
-                d_die = d_die % 100 + 1;
-            }
-            p2_score += *p2;
+    let mut scores = vec![0, 0];
+    while scores[0] < 1000 && scores[1] < 1000 {
+        let player = if rolls % 6 == 0 { 0 } else { 1 };
+        for _ in 0..3 {
+            positions[player] = ((positions[player] + d_die - 1) % 10) + 1;
+            d_die = d_die % 100 + 1;
         }
+        scores[player] += positions[player];
         rolls += 3;
     }
-    rolls * min(p1_score, p2_score)
+    rolls * scores.iter().min().unwrap()
 }
 
 fn part2(
@@ -89,7 +78,7 @@ fn part2(
 }
 
 fn main() {
-    let part1 = part1(&mut 10, &mut 4);
+    let part1 = part1(&mut vec![10, 4]);
     println!("Solution to part 1: {}", &part1);
     let part2 = part2(10, 0, 4, 0, 0, &mut HashMap::new());
     println!("Solution to part 2: {}", max(part2.0, part2.1));
