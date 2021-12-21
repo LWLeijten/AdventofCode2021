@@ -22,3 +22,4 @@ My solutions to the advent of code event 2021. For this edition I chose to solve
 | 16. | :zero::one:							 Packet Decoder          | [link](https://adventofcode.com/2021/day/16) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day16) |
 | 17. | :basketball_man:							 Trick Shot         | [link](https://adventofcode.com/2021/day/17) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day17) |
 | 20. | :world_map:								 Trench Map             | [link](https://adventofcode.com/2021/day/20) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day20) |
+| 21. | :game_die:								 Dirac Dice              | [link](https://adventofcode.com/2021/day/21) | [solution](https://github.com/LWLeijten/AdventofCode2021/tree/main/solutions/day21) |
