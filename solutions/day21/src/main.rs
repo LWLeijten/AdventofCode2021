@@ -17,54 +17,30 @@ fn part1(positions: &mut Vec<i32>) -> i32 {
 }
 
 fn part2(
-    p1: i64,
-    p1_score: i64,
-    p2: i64,
-    p2_score: i64,
+    positions: Vec<i64>,
+    scores: Vec<i64>,
     turn: i32,
-    cache: &mut HashMap<(i64, i64, i64, i64, i32), (i64, i64)>,
+    cache: &mut HashMap<(Vec<i64>, Vec<i64>, i32), (i64, i64)>,
 ) -> (i64, i64) {
-    let cache_key = (p1, p1_score, p2, p2_score, turn);
+    let cache_key = (positions.clone(), scores.clone(), turn);
     if cache.contains_key(&cache_key) {
         return *cache.get(&cache_key).unwrap();
-    } else if p1_score >= 21 {
+    } else if scores[0] >= 21 {
         return (1, 0);
-    } else if p2_score >= 21 {
+    } else if scores[1] >= 21 {
         return (0, 1);
     }
     let mut timelines = vec![];
-    if turn % 2 == 0 {
-        for dice1 in 1..4 {
-            for dice2 in 1..4 {
-                for dice3 in 1..4 {
-                    let rolled = dice1 + dice2 + dice3;
-                    let new_p1 = ((p1 + rolled - 1) % 10) + 1;
-                    timelines.push(part2(
-                        new_p1,
-                        p1_score + new_p1,
-                        p2,
-                        p2_score,
-                        turn + 1,
-                        cache,
-                    ))
-                }
-            }
-        }
-    } else {
-        for dice1 in 1..4 {
-            for dice2 in 1..4 {
-                for dice3 in 1..4 {
-                    let rolled = dice1 + dice2 + dice3;
-                    let new_p2 = ((p2 + rolled - 1) % 10) + 1;
-                    timelines.push(part2(
-                        p1,
-                        p1_score,
-                        new_p2,
-                        p2_score + new_p2,
-                        turn + 1,
-                        cache,
-                    ))
-                }
+    let player = if turn % 2 == 0 { 0 } else { 1 };
+    for dice1 in 1..4 {
+        for dice2 in 1..4 {
+            for dice3 in 1..4 {
+                let rolled = dice1 + dice2 + dice3;
+                let mut new_positions = positions.clone();
+                let mut new_scores = scores.clone();
+                new_positions[player] = ((new_positions[player] + rolled - 1) % 10) + 1;
+                new_scores[player] = new_scores[player] + new_positions[player];
+                timelines.push(part2(new_positions, new_scores, turn + 1, cache))
             }
         }
     }
@@ -80,6 +56,6 @@ fn part2(
 fn main() {
     let part1 = part1(&mut vec![10, 4]);
     println!("Solution to part 1: {}", &part1);
-    let part2 = part2(10, 0, 4, 0, 0, &mut HashMap::new());
+    let part2 = part2(vec![10, 4], vec![0, 0], 0, &mut HashMap::new());
     println!("Solution to part 2: {}", max(part2.0, part2.1));
 }
