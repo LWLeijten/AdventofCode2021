@@ -97,14 +97,14 @@ impl Cube {
         if other.x_min > self.x_min {
             sub_cubes.push(Cube {
                 x_max: other.x_min - 1,
-                ..self.clone()
+                ..*self
             });
             self.x_min = other.x_min;
         }
         if other.x_max < self.x_max {
             sub_cubes.push(Cube {
                 x_min: other.x_max + 1,
-                ..self.clone()
+                ..*self
             });
             self.x_max = other.x_max;
         }
@@ -112,14 +112,14 @@ impl Cube {
         if other.y_min > self.y_min {
             sub_cubes.push(Cube {
                 y_max: other.y_min - 1,
-                ..self.clone()
+                ..*self
             });
             self.y_min = other.y_min;
         }
         if other.y_max < self.y_max {
             sub_cubes.push(Cube {
                 y_min: other.y_max + 1,
-                ..self.clone()
+                ..*self
             });
             self.y_max = other.y_max;
         }
@@ -127,14 +127,14 @@ impl Cube {
         if other.z_min > self.z_min {
             sub_cubes.push(Cube {
                 z_max: other.z_min - 1,
-                ..self.clone()
+                ..*self
             });
             self.z_min = other.z_min;
         }
         if other.z_max < self.z_max {
             sub_cubes.push(Cube {
                 z_min: other.z_max + 1,
-                ..self.clone()
+                ..*self
             });
             self.z_max = other.z_max;
         }
