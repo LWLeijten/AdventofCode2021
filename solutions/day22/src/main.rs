@@ -68,17 +68,6 @@ struct Cube {
 }
 
 impl Cube {
-    fn new(x_min: i64, x_max: i64, y_min: i64, y_max: i64, z_min: i64, z_max: i64) -> Self {
-        Self {
-            x_min,
-            x_max,
-            y_min,
-            y_max,
-            z_min,
-            z_max,
-        }
-    }
-
     fn get_mass(self: &Self) -> i64 {
         ((self.x_max - self.x_min) + 1)
             * ((self.y_max - self.y_min) + 1)
@@ -106,71 +95,47 @@ impl Cube {
         let mut sub_cubes = vec![];
         // X-axis
         if other.x_min > self.x_min {
-            sub_cubes.push(Cube::new(
-                self.x_min,
-                other.x_min - 1,
-                self.y_min,
-                self.y_max,
-                self.z_min,
-                self.z_max,
-            ));
+            sub_cubes.push(Cube {
+                x_max: other.x_min - 1,
+                ..self.clone()
+            });
             self.x_min = other.x_min;
         }
         if other.x_max < self.x_max {
-            sub_cubes.push(Cube::new(
-                other.x_max + 1,
-                self.x_max,
-                self.y_min,
-                self.y_max,
-                self.z_min,
-                self.z_max,
-            ));
+            sub_cubes.push(Cube {
+                x_min: other.x_max + 1,
+                ..self.clone()
+            });
             self.x_max = other.x_max;
         }
         // Y-axis
         if other.y_min > self.y_min {
-            sub_cubes.push(Cube::new(
-                self.x_min,
-                self.x_max,
-                self.y_min,
-                other.y_min - 1,
-                self.z_min,
-                self.z_max,
-            ));
+            sub_cubes.push(Cube {
+                y_max: other.y_min - 1,
+                ..self.clone()
+            });
             self.y_min = other.y_min;
         }
         if other.y_max < self.y_max {
-            sub_cubes.push(Cube::new(
-                self.x_min,
-                self.x_max,
-                other.y_max + 1,
-                self.y_max,
-                self.z_min,
-                self.z_max,
-            ));
+            sub_cubes.push(Cube {
+                y_min: other.y_max + 1,
+                ..self.clone()
+            });
             self.y_max = other.y_max;
         }
         // Z-axis
         if other.z_min > self.z_min {
-            sub_cubes.push(Cube::new(
-                self.x_min,
-                self.x_max,
-                self.y_min,
-                self.y_max,
-                self.z_min,
-                other.z_min - 1,
-            ));
+            sub_cubes.push(Cube {
+                z_max: other.z_min - 1,
+                ..self.clone()
+            });
             self.z_min = other.z_min;
         }
         if other.z_max < self.z_max {
-            sub_cubes.push(Cube::new(
-                self.x_min,
-                self.x_max,
-                self.y_min,
-                self.y_max,
-                other.z_max + 1,
-                self.z_max,
-            ));
+            sub_cubes.push(Cube {
+                z_min: other.z_max + 1,
+                ..self.clone()
+            });
             self.z_max = other.z_max;
         }
         sub_cubes
